@@ -125,8 +125,7 @@ header::after{content:'';position:absolute;top:-28px;right:-12px;width:120px;hei
 .msg.u .av svg,.msg.b .av svg{width:13px;height:13px}
 .msg.u .av svg{fill:#fff}
 .msg.b .av svg{fill:var(--b900)}
-.bub{padding:9px 13px;border-radius:14px;font-size:0.81rem;line-height:1.65;word-wrap:break-word;max-width:82%;white-space:pre-wrap;transition:opacity 0.2s}
-.bub.translating-anim{opacity:0.45}
+.bub{ padding: 9px 13px;border-radius: 14px;font-size: 0.81rem;line-height: 1.65; word-wrap: break-word;max-width: 82%;min-width: fit-content;   /* ← AGREGAR */ white-space: pre-wrap; transition: opacity 0.2s;}
 .msg.u .bub{background:linear-gradient(135deg,var(--b500),var(--b900));color:#fff;border-bottom-right-radius:3px;box-shadow:0 3px 12px rgba(22,58,128,0.28);font-weight:500}
 .msg.b .bub{background:var(--white);color:var(--ink2);border:1px solid var(--border);border-bottom-left-radius:3px;box-shadow:var(--shd)}
 .bub.farewell{background:var(--b200);color:var(--b900);border:1px solid rgba(22,58,128,0.22);font-style:italic;font-family:'Playfair Display',serif}
@@ -298,7 +297,7 @@ header::after{content:'';position:absolute;top:-28px;right:-12px;width:120px;hei
   <div id="chat">
     <div class="welcome" id="welcomeCard">
       <div class="wc-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
-      <div class="wc-title">Bienvenido</div>
+      <div class="wc-title"> </div>
       <div class="wc-sub">Consulte sobre envíos, tarifas, rastreo de paquetes, sucursales y servicios postales de la AGBC.</div>
       <div class="wc-sep"><div class="wc-sep-l"></div><div class="wc-sep-d"></div><div class="wc-sep-l"></div></div>
     </div>
@@ -347,17 +346,17 @@ const TX={
   es:{
     ph:'Escriba su consulta aquí…', lbl:'Analizando consulta…',
     bye:'Conversación finalizada', translating:'Traduciendo conversación…',
-    chips:['¿Dónde están sus oficinas?','¿Cómo rastro mi paquete?','¿Cuáles son las tarifas?','Servicios internacionales']
+    chips:[]
   },
   en:{
     ph:'Type your question here…', lbl:'Processing request…',
     bye:'Conversation ended', translating:'Translating conversation…',
-    chips:['Where are your offices?','How do I track my package?','What are the rates?','International services']
+    chips:[]
   },
   fr:{
     ph:'Saisissez votre question…', lbl:'Traitement en cours…',
     bye:'Conversation terminée', translating:'Traduction en cours…',
-    chips:['Où sont vos bureaux?','Comment suivre mon colis?','Quels sont les tarifs?','Services internationaux']
+    chips:[]
   },
   pt:{
     ph:'Digite sua consulta aqui…', lbl:'Processando sua consulta…',
@@ -367,12 +366,12 @@ const TX={
   zh:{
     ph:'请在此输入您的问题…', lbl:'正在处理您的请求…',
     bye:'对话已结束', translating:'正在翻译对话…',
-    chips:['办公室在哪里？','如何追踪我的包裹？','费率是多少？','国际服务']
+    chips:[]
   },
   ru:{
     ph:'Введите ваш вопрос…', lbl:'Обработка запроса…',
     bye:'Разговор завершён', translating:'Перевод разговора…',
-    chips:['Где находятся ваши офисы?','Как отслеживать посылку?','Какие тарифы?','Международные услуги']
+    chips:['']
   },
 };
 
@@ -526,9 +525,6 @@ function addMsg(text,type,bye=false,loc=null,noTranslate=false){
     if(!bye && !noTranslate){
       const acts=document.createElement('div'); acts.className='msg-actions';
       const btn = document.createElement('button');
-      btn.className = 'btn-translate';
-      btn.textContent = '🌐 Traducir';
-      btn.onclick = () => translateMsg(b, btn, b.dataset.original || text);
       acts.appendChild(btn);
       body.appendChild(acts);
     }
@@ -550,8 +546,6 @@ async function translateMsg(bubble,btn,originalText){
       btn.textContent='↩ Original';btn.style.color='var(--y700)';
       btn.onclick=()=>{
         bubble.textContent=originalText;
-        btn.textContent='🌐 Traducir';btn.style.color='';
-        btn.onclick=()=>translateMsg(bubble,btn,originalText);
       };
     }else{btn.textContent='🌐 Traducir';}
   }catch{btn.textContent='🌐 Traducir';}
@@ -625,7 +619,7 @@ async function doClear(){
   const wc=document.createElement('div');wc.className='welcome';wc.id='welcomeCard';
   wc.innerHTML=`
     <div class="wc-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
-    <div class="wc-title">Bienvenido</div>
+    <div class="wc-title"> </div>
     <div class="wc-sub">Consulte sobre envíos, tarifas, rastreo de paquetes, sucursales y servicios postales de la AGBC.</div>
     <div class="wc-sep"><div class="wc-sep-l"></div><div class="wc-sep-d"></div><div class="wc-sep-l"></div></div>
     <div class="chips" id="chips-container">

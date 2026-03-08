@@ -9,46 +9,6 @@
 </head>
 <body>
 
-<!-- Wiphala Bar (colores de la bandera boliviana) -->
-<div class="wiphala-bar">
-  <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-  <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-  <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-  <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-  <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-</div>
-
-<!-- Página Hero -->
-<div class="page">
-  <div class="hero">
-    <div class="hero-badge">
-      <div class="hero-badge-dot"></div>
-      Servicio en Línea · AGBC
-    </div>
-    <div class="hero-seal">
-      <span class="seal-mono">CB</span>
-    </div>
-    <h1 class="hero-title">Correos de <em>Bolivia</em></h1>
-    <div class="hero-rule">
-      <div class="hero-rule-line"></div>
-      <div class="hero-rule-d"></div>
-      <div class="hero-rule-line"></div>
-    </div>
-    <p class="hero-desc">Servicio postal oficial del Estado Plurinacional. Envíos nacionales e internacionales, rastreo de paquetes y atención ciudadana.</p>
-    <button class="hero-btn" onclick="toggleChat()">
-      <svg viewBox="0 0 24 24"><path d="M20 2H4C2.9 2 2 2.9 2 4v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-      Abrir Asistente Virtual
-    </button>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-n">9</div><div class="stat-l">Departamentos</div></div>
-      <div class="stat-div"></div>
-      <div class="stat"><div class="stat-n">EMS</div><div class="stat-l">Internacional</div></div>
-      <div class="stat-div"></div>
-      <div class="stat"><div class="stat-n">24/7</div><div class="stat-l">Rastreo</div></div>
-    </div>
-  </div>
-</div>
-
 <!-- Chat Bubble -->
 <button id="chat-bubble" onclick="toggleChat()" aria-label="Abrir asistente">
   <svg viewBox="0 0 24 24"><path d="M20 2H4C2.9 2 2 2.9 2 4v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
@@ -57,7 +17,6 @@
 
 <!-- Chat Window -->
 <div id="chat-window">
-  <!-- Banner de traducción -->
   <div id="translate-banner"></div>
 
   <!-- Header -->
@@ -99,26 +58,8 @@
     <div class="h-stripe"></div>
   </header>
 
-  <!-- Chat Area -->
+  <!-- Chat Area: solo chips, sin .wc-sub ni .wc-sep -->
   <div id="chat">
-    <div class="welcome" id="welcomeCard">
-      <div class="wc-icon">
-        <svg viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-      </div>
-      <div class="wc-title">Bienvenido</div>
-      <div class="wc-sub" id="welcome-subtitle">Consulte sobre envíos, tarifas, rastreo de paquetes, sucursales y servicios postales de la AGBC.</div>
-      <div class="wc-sep">
-        <div class="wc-sep-l"></div>
-        <div class="wc-sep-d"></div>
-        <div class="wc-sep-l"></div>
-      </div>
-      <div class="chips" id="chips-container">
-        <button class="chip" onclick="suggest(this)">Rastrear envío</button>
-        <button class="chip" onclick="suggest(this)">Tarifas de envío</button>
-        <button class="chip" onclick="suggest(this)">Sucursales cercanas</button>
-        <button class="chip" onclick="suggest(this)">Horarios de atención</button>
-      </div>
-    </div>
   </div>
 
   <!-- Form Area -->
@@ -166,11 +107,5 @@
   </div>
 </div>
 
-<!-- Leaflet CSS & JS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-
-<!-- Widget JS -->
-<script src="widget.js"></script>
 </body>
 </html>
